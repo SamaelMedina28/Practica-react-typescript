@@ -1,3 +1,5 @@
+import { FaTrash } from "react-icons/fa";
+
 type Props = {
   text: string;
   completed: boolean;
@@ -17,7 +19,7 @@ export default function Item({ text, completed, toggleTodo, deleteTodo, id }: Pr
           checked={completed}
           onChange={() => toggleTodo(id)}
         />
-        <button onClick={() => deleteTodo(id)} className="bg-red-500 text-white px-2 py-1 rounded">Eliminar</button>
+        <button onClick={() => deleteTodo(id)} className="bg-red-500 text-white px-2 py-2 rounded"><FaTrash size={20} color="white" /></button>
       </div>
     </li>
   )

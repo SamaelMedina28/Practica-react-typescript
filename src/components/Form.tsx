@@ -3,7 +3,6 @@ import { useState } from "react";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
 import Item from "./ui/Item";
-
 export const Form = () => {
   const { addTodo, todos, toggleTodo, deleteTodo } = useTodos();
   const [text, setText] = useState('');
@@ -21,7 +20,7 @@ export const Form = () => {
         <Input label="Tarea" value={text} onChange={onChange} />
         <Button label="Guardar" />
       </form>
-      <ul>
+      <ul className="flex flex-col gap-2 my-5">
         {todos.map(todo => (
           <Item key={todo.id} {...todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
         ))}
