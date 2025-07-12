@@ -3,6 +3,7 @@ import { useState } from "react";
 import Input from "./ui/Input";
 import Button from "./ui/Button";
 import Item from "./ui/Item";
+import { FaSave } from "react-icons/fa";
 export const Form = () => {
   const { addTodo, todos, toggleTodo, deleteTodo } = useTodos();
   const [text, setText] = useState('');
@@ -11,6 +12,10 @@ export const Form = () => {
   }
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (text.trim() === '') {
+      alert('Por favor, ingresa una tarea');
+      return;
+    }
     addTodo(text);
     setText('');
   }
@@ -18,7 +23,7 @@ export const Form = () => {
     <>
       <form onSubmit={onSubmit} className="flex gap-2 w-1/3 mx-auto" >
         <Input label="Tarea" value={text} onChange={onChange} />
-        <Button label="Guardar" />
+        <Button icon={<FaSave size={20} />} />
       </form>
       <ul className="flex flex-col gap-2 my-5">
         {todos.map(todo => (
